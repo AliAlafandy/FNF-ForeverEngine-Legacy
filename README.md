@@ -1,4 +1,4 @@
-<h1 align="center">Forever Engine Legacy</h1>
+<h1 align="center">Friday Night Funkin': Forever Engine Legacy</h1>
 <h2 align="center">An open-source, quality of life and performance driven Friday Night Funkin' mod engine!</h2>
 
 ----------------------------------------------
