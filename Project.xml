@@ -3,7 +3,13 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Forever Engine" file="Forever-Engine" packageName="com.crowplexus.foreverenginelegacy" package="com.crowplexus.foreverenginelegacy" main="Main" company="crowplexus" />
+	<app title="Friday Night Funkin': Forever Engine" unless="mobile"/>
+	<app title="FNF': Forever Engine" if="mobile"/>
+	<app file="ForeverEngine" />
+	<app packageName="com.crowplexus.foreverengine" />
+	<app package="com.crowplexus.foreverengine" />
+	<app main="Main" />
+	<app company="crowplexus" />
 
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -24,7 +30,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" />
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -35,17 +41,20 @@
 	<source path="source" />
 	<assets path="assets" />
 
+	<assets path="mobile" rename="assets/mobile" if="mobileC" />
+
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
-	<haxedev set='webgl' if="html5" />
+	<haxedev set="webgl" if="html5" />
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="cpp" />
 	<haxelib name="hxcpp-debug-server" if="debug" />
+	<haxelib name="extension-androidtools" if="android" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -68,14 +77,40 @@
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
 	<haxedef name="HXCPP_STACK_LINE" if="release" />
 
+	<!--Mobile Controls Define-->
+	<define name="mobileC" if="mobile" /> <!--Can be added windows, mac or linux-->
+
+	<!--Always enable Null Object Reference check-->
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE" />
+
+	<section if="android">
+		<config>
+			<!--Gradle-->
+			<!--<android gradle-version="7.4.2" gradle-plugin="7.3.1" />--> <!-- ENABLE THIS IF YOU HAVE ISSUES AT COMPILE -->
+
+			<!--Target SDK-->
+			<android min-sdk-version="16" target-sdk-version="29" max-sdk-version="33" if="${lime &lt; 8.1.0}"/>
+        </config>
+	</section>
+
+	<section if="ios">
+		<!--Dependency--> 
+		<dependency name="Metal.framework" if="${lime &lt; 8.0.0}" />
+	</section>
+
+    <haxedef name="no-deprecation-warnings" unless="debug" />
+
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<icon path="art/icon16.png" size='16' />
-	<icon path="art/icon32.png" size='32' />
-	<icon path="art/icon64.png" size='64' />
-	<icon path="art/icon128.png" size='128' />
-	<icon path="art/icon256.png" size='256' />
-	<icon path="art/icon512.png" size='512' />
-	<icon path="art/iconOG.png" />
+	<icon path="art/icon16.png" size="16" />
+	<icon path="art/icon32.png" size="32" />
+	<icon path="art/icon64.png" size="64" />
 
+	<icon path="art/icon128.png" size="128" />
+	<icon path="art/icon256.png" size="256" />
+	<icon path="art/icon512.png" size="512" />
+
+	<icon path="art/iconOG.png" />
 </project>
