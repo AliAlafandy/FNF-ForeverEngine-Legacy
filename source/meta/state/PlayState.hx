@@ -42,6 +42,10 @@ import sys.io.File;
 
 using StringTools;
 
+#if mobileC
+import mobile.MobileControls;
+#end
+
 #if desktop
 import meta.data.dependency.Discord;
 #end
@@ -313,6 +317,27 @@ class PlayState extends MusicBeatState
 		}
 
 		Paths.clearUnusedMemory();
+
+		#if mobileC
+		mcontrols = new MobileControls();
+		switch (mcontrols.mode)
+		{
+			case VIRTUALPAD_RIGHT | VIRTUALPAD_LEFT | VIRTUALPAD_CUSTOM:
+				controls.setVirtualPad(mcontrols._virtualPad, FULL, NONE);
+			case HITBOX:
+				controls.setHitBox(mcontrols._hitbox);
+			default:
+		}
+		trackedinputs = controls.trackedinputs;
+		controls.trackedinputs = [];
+
+		var camcontrol = new FlxCamera();
+		FlxG.cameras.add(camcontrol);
+		camcontrol.bgColor.alpha = 0;
+		mcontrols.cameras = [camcontrol];
+
+		add(mcontrols);
+		#end
 
 		// call the funny intro cutscene depending on the song
 		if (!skipCutscenes())
