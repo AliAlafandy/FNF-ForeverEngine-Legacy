@@ -138,6 +138,11 @@ class Main extends Sprite
 		}
 		*/
 
+		/*#if mobile
+		SUtil.checkFiles();
+		SUtil.uncaughtErrorHandler();
+		#end*/
+
 		// here we set up the base game
 		var gameCreate:FlxGame;
 		gameCreate = new FlxGame(gameWidth, gameHeight, Init, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash);
