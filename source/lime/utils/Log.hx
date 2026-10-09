@@ -1,4 +1,4 @@
-/*package lime.utils;
+package lime.utils;
 
 import openfl.Lib;
 #if android
@@ -176,4 +176,4 @@ class Log
 		}
 		#end
 	}
-}*/
+}
