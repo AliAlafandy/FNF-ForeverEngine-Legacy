@@ -40,7 +40,9 @@
 	<source path="source" />
 	<assets path="assets" />
 
-	<define name="mobileC" if="mobile"/>
+	<define name="discord_rpc" if="desktop" />
+
+	<define name="mobileC" if="mobile" />
 	<assets path="mobile" rename="assets/mobile" if="mobileC" />
 
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
