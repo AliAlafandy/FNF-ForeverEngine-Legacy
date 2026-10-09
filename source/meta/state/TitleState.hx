@@ -55,6 +55,10 @@ class TitleState extends MusicBeatState
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 		super.create();
 
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+
 		startIntro();
 	}
 
