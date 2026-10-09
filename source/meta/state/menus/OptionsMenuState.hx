@@ -55,6 +55,7 @@ class OptionsMenuState extends MusicBeatState
 					['preferences', callNewGroup],
 					['appearance', callNewGroup],
 					['controls', openControlmenu],
+					#if mobileC ['mobile controls', openMobileControlmenu], #end
 					['exit', exitMenu]
 				]
 			],
@@ -529,6 +530,22 @@ class OptionsMenuState extends MusicBeatState
 			});
 		}
 	}
+
+	#if mobileC
+	public function openMobileControlmenu()
+	{
+		if (controls.ACCEPT)
+		{
+			FlxG.sound.play(Paths.sound('confirmMenu'));
+			lockedMovement = true;
+			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
+			{
+				openSubState(new mobile.MobileControlsSubstate());
+				lockedMovement = false;
+			});
+		}
+	}
+	#end
 
 	public function exitMenu()
 	{
