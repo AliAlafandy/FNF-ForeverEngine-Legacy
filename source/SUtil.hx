@@ -1,4 +1,4 @@
-package;
+/*package;
 
 #if android
 import android.content.Context;
@@ -28,16 +28,9 @@ enum StorageType
 	MEDIA;
 }
 
-/**
- * ...
- * @author Mihai Alexandru (M.A. Jigsaw)
- * @modified mcagabe19
- */
 class SUtil
 {
-	/**
-	 * This returns the external storage path that the game will use by the type.
-	 */
+	// This returns the external storage path that the game will use by the type.
 	public static function getStorageDirectory(type:StorageType = MEDIA):String
 	{
 		var daPath:String = '';
@@ -61,9 +54,7 @@ class SUtil
 		return daPath;
 	}
 
-	/**
-	 * A simple function that checks for game files/folders.
-	 */
+	// A simple function that checks for game files/folders.
 	public static function checkFiles():Void
 	{
 		#if mobile
@@ -121,9 +112,7 @@ class SUtil
 		#end
 	}
 
-	/**
-	 * Uncaught error handler, original made by: Sqirra-RNG and YoshiCrafter29
-	 */
+	// Uncaught error handler, original made by: Sqirra-RNG and YoshiCrafter29
 	public static function uncaughtErrorHandler():Void
 	{
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
@@ -191,9 +180,7 @@ class SUtil
 		LimeSystem.exit(1);
 	}
 
-	/**
-	 * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
-	 */
+	// This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
 	#if sys
 	public static function mkDirs(directory:String):Void
 	{
@@ -240,9 +227,7 @@ class SUtil
 		}
 	}
 
-	/**
-	 * Copies the content of copyPath and pastes it in savePath.
-	 */
+	// Copies the content of copyPath and pastes it in savePath.
 	public static function copyContent(copyPath:String, savePath:String):Void
 	{
 		try
@@ -265,4 +250,4 @@ class SUtil
 		}
 	}
 	#end
-}
+}*/
