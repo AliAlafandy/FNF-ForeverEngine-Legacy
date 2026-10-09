@@ -46,6 +46,11 @@
          "dir": null,
          "ref": "master",
          "url": "https://github.com/Aidan63/linc_discord-rpc"
+      },
+      {
+         "name": "extension-androidtools",
+         "type": "install",
+         "version": null
       }
    ]
 }
