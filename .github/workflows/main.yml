@@ -1,118 +1,53 @@
 name: Main
+on: workflow_dispatch
 
-on:
-  push:
-  pull_request:
-  workflow_dispatch:
+# permissions: write-all
 
 jobs:
-  # Windows
-  windowsBuild:
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          submodules: true
-
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.2.5
-
-      - name: Installing Libraries
-        run: |
-          haxelib install lime
-          haxelib install openfl
-          haxelib install flixel
-          haxelib run lime setup flixel
-          haxelib run lime setup
-          haxelib install flixel-tools
-          haxelib run flixel-tools setup
-          haxelib install hxcpp-debug-server
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-
-      - name: Building
-        run: haxelib run lime build windows -final
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: windowsBuild
-          path: export/release/windows/bin
-          if-no-files-found: error
-
-  # Linux
-  linuxBuild:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          submodules: true
-
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.2.5
-
-      - name: Installing Libraries
-        run: |
-          haxelib install lime
-          haxelib install openfl
-          haxelib install flixel
-          haxelib run lime setup flixel
-          haxelib run lime setup
-          haxelib install flixel-tools
-          haxelib run flixel-tools setup
-          haxelib install hxcpp-debug-server
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-
-      - name: Building
-        run: haxelib run lime build linux -final
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: linuxBuild
-          path: export/release/linux/bin
-          if-no-files-found: error
-
-  # Mac
-  macBuild:
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-        with:
-          submodules: true
-
-      - name: Setup Haxe
-        uses: krdlab/setup-haxe@master
-        with:
-          haxe-version: 4.2.5
-
-      - name: Installing Libraries
-        run: |
-          haxelib install lime
-          haxelib install openfl
-          haxelib install flixel
-          haxelib run lime setup flixel
-          haxelib run lime setup
-          haxelib install flixel-tools
-          haxelib run flixel-tools setup
-          haxelib install hxcpp-debug-server
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-
-      - name: Building
-        run: haxelib run lime build mac -final
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: macBuild
-          path: export/release/macos/bin
-          if-no-files-found: error
+  Build:
+    name: ${{ matrix.name }}
+    strategy:
+      matrix:
+        include:
+          - name: Windows x64
+            os: windows-2022
+            buildArgs: windows
+            artifactName: Windows x64
+            artifactPath: export\release\windows\bin
+          - name: Windows x32
+            os: windows-2022
+            buildArgs: "windows -32 -D HXCPP_M32 -D 32bits"
+            artifactName: Windows x32
+            artifactPath: export\32bit\windows\bin
+          - name: Linux
+            os: ubuntu-22.04
+            buildArgs: linux
+            artifactName: Linux
+            artifactPath: export/release/linux/bin
+          - name: MacOS
+            os: macos-15
+            buildArgs: mac
+            artifactName: MacOS
+            artifactPath: export/release/macos/bin
+          - name: Android x64
+            os: ubuntu-22.04
+            buildArgs: "android -ONLY_ARM64"
+            artifactName: Android x64
+            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
+          - name: Android x32
+            os: ubuntu-22.04
+            buildArgs: "android -ONLY_ARMV7"
+            artifactName: Android x32
+            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
+          - name: iOS
+            os: macos-15
+            buildArgs: "ios -nosign"
+            artifactName: IOS
+            artifactPath: "export/release/ios/build/Release-iphoneos/*.ipa"
+    uses: ./.github/workflows/build.yml
+    with:
+        name: ${{ matrix.name }}
+        os: ${{ matrix.os }}
+        buildArgs: ${{ matrix.buildArgs }}
+        artifactName: ${{ matrix.artifactName }}
+        artifactPath: ${{ matrix.artifactPath }}
