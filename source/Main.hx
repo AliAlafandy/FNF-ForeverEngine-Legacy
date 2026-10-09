@@ -138,7 +138,7 @@ class Main extends Sprite
 		}
 		*/
 
-		/*#if mobile
+		/*#if android
 		SUtil.checkFiles();
 		SUtil.uncaughtErrorHandler();
 		#end*/
