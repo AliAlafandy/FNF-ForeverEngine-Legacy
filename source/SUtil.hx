@@ -1,4 +1,4 @@
-/*package;
+package;
 
 #if android
 import android.content.Context;
@@ -250,4 +250,4 @@ class SUtil
 		}
 	}
 	#end
-}*/
+}
