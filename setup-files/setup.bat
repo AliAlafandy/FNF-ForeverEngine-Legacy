@@ -17,12 +17,12 @@ cls
 
 title Forever Engine Setup - Installing HaxeFlixel
 echo It is time to install the engine that Funkin' uses - HaxeFlixel.
-haxelib install lime
-haxelib install openfl
-haxelib install flixel
+haxelib install lime 8.0.1
+haxelib install openfl 9.2.1
+haxelib install flixel 5.2.2
 haxelib run lime setup flixel
 haxelib run lime setup
-haxelib install flixel-tools
+haxelib install flixel-tools 1.5.1
 haxelib run flixel-tools Setup
 
 title Forever Engine Setup - Installing Additional Libraries
