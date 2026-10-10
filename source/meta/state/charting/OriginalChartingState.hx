@@ -2,7 +2,9 @@ package meta.state.charting;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+
 import flixel.addons.display.FlxGridOverlay;
+
 import flixel.addons.ui.FlxInputText;
 import flixel.addons.ui.FlxUI9SliceSprite;
 import flixel.addons.ui.FlxUI;
@@ -12,24 +14,33 @@ import flixel.addons.ui.FlxUIInputText;
 import flixel.addons.ui.FlxUINumericStepper;
 import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUITooltip.FlxUITooltipStyle;
+
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
+
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
+
 import flixel.text.FlxText;
+
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
+
 import flixel.util.FlxColor;
+
 import gameObjects.*;
 import gameObjects.userInterface.*;
 import gameObjects.userInterface.notes.*;
+
 import haxe.Json;
 import lime.utils.Assets;
+
 import meta.MusicBeat.MusicBeatState;
 import meta.data.*;
 import meta.data.Conductor.BPMChangeEvent;
 import meta.data.Section.SwagSection;
 import meta.data.Song.SwagSong;
+
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
