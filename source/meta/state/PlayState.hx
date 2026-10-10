@@ -53,10 +53,6 @@ import sys.io.File;
 
 using StringTools;
 
-#if mobileC
-import mobile.MobileControls;
-#end
-
 #if desktop
 import meta.data.dependency.Discord;
 #end
