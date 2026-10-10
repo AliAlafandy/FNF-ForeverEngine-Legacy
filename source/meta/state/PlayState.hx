@@ -1163,8 +1163,10 @@ class PlayState extends MusicBeatState
 
 	override public function onFocus():Void
 	{
+		#if desktop
 		if (!paused)
 			updateRPC(false);
+		#end
 		super.onFocus();
 	}
 
@@ -1427,8 +1429,10 @@ class PlayState extends MusicBeatState
 		// set details for song stuffs
 		detailsSub = "";
 
+		#if desktop
 		// Updating Discord Rich Presence.
 		updateRPC(false);
+		#end
 
 		curSong = songData.song;
 		songMusic = new FlxSound().loadEmbedded(Paths.inst(SONG.song), false, true);
@@ -1594,9 +1598,9 @@ class PlayState extends MusicBeatState
 
 			paused = false;
 
-			///*
+			#if desktop
 			updateRPC(false);
-			// */
+			#end
 		}
 
 		Paths.clearUnusedMemory();
