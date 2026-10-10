@@ -1,6 +1,7 @@
 package meta.state.menus;
 
 import flash.text.TextField;
+
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
@@ -11,15 +12,19 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.tweens.misc.ColorTween;
 import flixel.util.FlxColor;
+
 import gameObjects.userInterface.HealthIcon;
 import lime.utils.Assets;
+
 import meta.MusicBeat.MusicBeatState;
 import meta.data.*;
 import meta.data.Song.SwagSong;
 import meta.data.dependency.Discord;
 import meta.data.font.Alphabet;
+
 import openfl.media.Sound;
 import sys.FileSystem;
+
 #if target.threaded
 import sys.thread.Mutex;
 import sys.thread.Thread;
