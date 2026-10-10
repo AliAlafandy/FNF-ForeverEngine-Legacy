@@ -40,8 +40,6 @@
 	<source path="source" />
 	<assets path="assets" />
 
-	<define name="discord_rpc" if="desktop" />
-
 	<define name="mobileC" if="mobile" />
 	<assets path="mobile" rename="assets/mobile" if="mobileC" />
 
