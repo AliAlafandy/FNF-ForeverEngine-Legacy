@@ -343,7 +343,7 @@ class PlayState extends MusicBeatState
 				controls.setHitBox(mcontrols._hitbox);
 			default:
 		}
-		trackedinputs = controls.trackedinputs;
+		trackedinputs = controls.trackedinputsNOTES;
 		controls.trackedinputs = [];
 
 		var camcontrol = new FlxCamera();
@@ -1188,7 +1188,6 @@ class PlayState extends MusicBeatState
 		super.onFocusLost();
 	}
 
-	#if desktop
 	public static function updateRPC(pausedRPC:Bool)
 	{
 		#if discord_rpc
@@ -1203,7 +1202,6 @@ class PlayState extends MusicBeatState
 		}
 		#end
 	}
-	#end
 
 	function popUpScore(baseRating:String, isLate: Bool, strumline:Strumline, coolNote:Note)
 	{
