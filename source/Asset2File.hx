@@ -1,4 +1,4 @@
-package;
+/*package;
 
 import haxe.crypto.Md5;
 import openfl.utils.Assets;
@@ -29,4 +29,4 @@ class Asset2File
 		return #if sys Sys.getCwd() + #end id;
 		#end
 	}
-}
+}*/
