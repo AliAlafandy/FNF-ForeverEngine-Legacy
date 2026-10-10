@@ -343,8 +343,8 @@ class PlayState extends MusicBeatState
 				controls.setHitBox(mcontrols._hitbox);
 			default:
 		}
-		trackedinputsNOTES = controls.trackedinputsNOTES;
-		controls.trackedinputsNOTES = [];
+		trackedInputsNOTES = controls.trackedInputsNOTES;
+		controls.trackedInputsNOTES = [];
 
 		var camcontrol = new FlxCamera();
 		FlxG.cameras.add(camcontrol);
