@@ -5,28 +5,36 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxStrip;
+
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxTiledSprite;
 import flixel.addons.ui.FlxUI9SliceSprite;
 import flixel.addons.ui.FlxUI;
 import flixel.addons.ui.FlxUITabMenu;
+
 import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxFrame;
+
 import flixel.group.FlxGroup.FlxTypedGroup;
+
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
+
 import gameObjects.userInterface.menu.DebugUI.UIBox;
 import gameObjects.userInterface.menu.DebugUI;
 import gameObjects.userInterface.notes.Note;
+
 import haxe.io.Bytes;
 import lime.media.AudioBuffer;
 import lime.media.vorbis.VorbisFile;
 import meta.MusicBeat.MusicBeatState;
+
 import openfl.display.BitmapData;
 import openfl.geom.Matrix;
 import openfl.geom.Rectangle;
 import openfl.media.Sound;
+
 #if sys
 import sys.thread.Thread;
 #end
