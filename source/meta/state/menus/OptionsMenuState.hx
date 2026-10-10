@@ -8,13 +8,19 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+
 import gameObjects.userInterface.menu.Checkmark;
 import gameObjects.userInterface.menu.Selector;
+
 import meta.MusicBeat.MusicBeatState;
 import meta.data.dependency.Discord;
 import meta.data.dependency.FNFSprite;
 import meta.data.font.Alphabet;
 import meta.subState.OptionsSubstate;
+
+#if mobile
+import mobile.MobileControlsSubState;
+#end
 
 /**
 	Options menu rewrite because I'm unhappy with how it was done previously
@@ -540,7 +546,7 @@ class OptionsMenuState extends MusicBeatState
 			lockedMovement = true;
 			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
 			{
-				openSubState(new mobile.MobileControlsSubstate());
+				openSubState(new MobileControlsSubState());
 				lockedMovement = false;
 			});
 		}
