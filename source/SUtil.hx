@@ -1,9 +1,9 @@
 package;
 
 #if android
-import androidtools.content.Context;
-import androidtools.widget.Toast;
-import androidtools.os.Environment;
+import extension.androidtools.content.Context;
+import extension.androidtools.widget.Toast;
+import extension.androidtools.os.Environment;
 #end
 
 import haxe.CallStack;
