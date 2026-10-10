@@ -156,7 +156,7 @@ class PlayState extends MusicBeatState
 	public var comboGroup:FlxSpriteGroup;
 
 	#if mobileC
-	var mcontrols:MobileControls; 
+	var mobileControls:MobileControls;
 	#end
 
 	function resetStatics()
@@ -334,24 +334,10 @@ class PlayState extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		#if mobileC
-		mcontrols = new MobileControls();
-		switch (mcontrols.mode)
-		{
-			case VIRTUALPAD_RIGHT | VIRTUALPAD_LEFT | VIRTUALPAD_CUSTOM:
-				controls.setVirtualPad(mcontrols._virtualPad, FULL, NONE);
-			case HITBOX:
-				controls.setHitBox(mcontrols._hitbox);
-			default:
-		}
-		trackedInputsNOTES = controls.trackedInputsNOTES;
-		controls.trackedInputsNOTES = [];
-
-		var camcontrol = new FlxCamera();
-		FlxG.cameras.add(camcontrol);
-		camcontrol.bgColor.alpha = 0;
-		mcontrols.cameras = [camcontrol];
-
-		add(mcontrols);
+		addMobileControls();
+		mobileControls.instance.visible = true;
+		/*mobileControls.onButtonDown.add(onButtonPress);
+		mobileControls.onButtonUp.add(onButtonRelease);*/
 		#end
 
 		// call the funny intro cutscene depending on the song
