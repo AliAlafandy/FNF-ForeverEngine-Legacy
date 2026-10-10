@@ -2,8 +2,10 @@
    "dependencies": [
       {
          "name": "lime",
-         "type": "haxelib",
-         "version": "8.0.1"
+         "type": "git",
+         "dir": null,
+         "ref": "main",
+         "url": "https://github.com/AlafandyPorting/lime-0.7.3"
       },
       {
          "name": "flixel",
@@ -53,13 +55,6 @@
          "dir": null,
          "ref": "master",
          "url": "https://github.com/Aidan63/linc_discord-rpc"
-      },
-      {
-         "name": "extension-androidtools",
-         "type": "git",
-         "dir": null,
-         "ref": "main",
-         "url": "https://github.com/AlafandyPorting/extension-androidtools-legacy"
       }
    ]
 }
