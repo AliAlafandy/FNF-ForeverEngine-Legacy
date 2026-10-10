@@ -331,7 +331,7 @@ class PlayState extends MusicBeatState
 
 		#if mobileC
 		addMobileControls();
-		mobileControls.instance.visible = true;
+		// mobileControls.instance.visible = true;
 		#end
 
 		// call the funny intro cutscene depending on the song
