@@ -16,7 +16,10 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 
 import meta.MusicBeat.MusicBeatState;
+
+#if desktop
 import meta.data.dependency.Discord;
+#end
 
 using StringTools;
 
@@ -48,8 +51,10 @@ class MainMenuState extends MusicBeatState
 		// make sure the music is playing
 		ForeverTools.resetMenuMusic();
 
+		#if desktop
 		#if discord_rpc
 		Discord.changePresence('MENU SCREEN', 'Main Menu');
+		#end
 		#end
 
 		// uh
