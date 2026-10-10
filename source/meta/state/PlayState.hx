@@ -53,6 +53,10 @@ import sys.io.File;
 
 using StringTools;
 
+#if mobile
+import mobile.MobileControls;
+#end
+
 #if desktop
 import meta.data.dependency.Discord;
 #end
@@ -150,10 +154,6 @@ class PlayState extends MusicBeatState
 	public var strumLines:FlxTypedGroup<Strumline>;
 
 	public var comboGroup:FlxSpriteGroup;
-
-	#if mobileC
-	var mobileControls:MobileControls;
-	#end
 
 	function resetStatics()
 	{
