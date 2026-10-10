@@ -214,7 +214,10 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 
 		// update game
 		PlayState.detailsSub = scoreBar.text;
+
+		#if discord_rpc
 		PlayState.updateRPC(false);
+		#end
 	}
 
 	public function beatHit()
