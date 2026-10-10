@@ -33,7 +33,7 @@ class Discord
 			details: "",
 			state: null,
 			largeImageKey: 'fel-logo',
-			largeImageText: "Forever Engine Legacy"
+			largeImageText: "Forever Engine"
 		});
 	}
 
@@ -60,7 +60,7 @@ class Discord
 			details: details,
 			state: state,
 			largeImageKey: 'fel-logo',
-			largeImageText: "Forever Engine Legacy",
+			largeImageText: "Forever Engine",
 			smallImageKey: smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp: Std.int(startTimestamp * 0.001),
