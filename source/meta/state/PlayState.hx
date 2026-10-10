@@ -144,6 +144,10 @@ class PlayState extends MusicBeatState
 
 	public var comboGroup:FlxSpriteGroup;
 
+	#if mobileC
+	var mcontrols:MobileControls; 
+	#end
+
 	function resetStatics()
 	{
 		// reset any values and variables that are static
