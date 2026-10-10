@@ -1,10 +1,11 @@
 package;
 
 #if android
-import android.content.Context;
-import android.widget.Toast;
-import android.os.Environment;
+import androidtools.content.Context;
+import androidtools.widget.Toast;
+import androidtools.os.Environment;
 #end
+
 import haxe.CallStack;
 import haxe.io.Path;
 import lime.app.Application;
@@ -13,6 +14,7 @@ import lime.utils.Assets as LimeAssets;
 import lime.utils.Log as LimeLogger;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
+
 #if sys
 import sys.FileSystem;
 import sys.io.File;
