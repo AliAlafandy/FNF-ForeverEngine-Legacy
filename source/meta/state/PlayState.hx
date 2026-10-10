@@ -7,18 +7,25 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxSubState;
+
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.transition.FlxTransitionableState;
+
 import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
+
 import flixel.input.keyboard.FlxKey;
+
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRandom;
 import flixel.math.FlxRect;
+
 import flixel.system.FlxAssets.FlxSoundAsset;
+
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
