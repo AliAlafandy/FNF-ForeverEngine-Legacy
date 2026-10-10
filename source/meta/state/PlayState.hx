@@ -1132,8 +1132,10 @@ class PlayState extends MusicBeatState
 
 	public function pauseGame()
 	{
+		#if desktop
 		// pause discord rpc
 		updateRPC(true);
+		#end
 
 		// pause game
 		paused = true;
@@ -1173,6 +1175,7 @@ class PlayState extends MusicBeatState
 		super.onFocusLost();
 	}
 
+	#if desktop
 	public static function updateRPC(pausedRPC:Bool)
 	{
 		#if discord_rpc
@@ -1187,6 +1190,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 	}
+	#end
 
 	function popUpScore(baseRating:String, isLate: Bool, strumline:Strumline, coolNote:Note)
 	{
