@@ -32,8 +32,10 @@
       },
       {
          "name": "hxcpp",
-         "type": "haxelib",
-         "version": "4.1.15"
+         "type": "git",
+         "dir": null,
+         "ref": "main",
+         "url": "https://github.com/AlafandyPorting/hxcpp-0.7.3"
       },
       {
          "name": "hscript",
