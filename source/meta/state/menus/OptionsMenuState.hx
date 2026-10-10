@@ -3,9 +3,11 @@ package meta.state.menus;
 import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxSprite;
+
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
@@ -18,7 +20,7 @@ import meta.data.dependency.FNFSprite;
 import meta.data.font.Alphabet;
 import meta.subState.OptionsSubstate;
 
-#if mobile
+#if mobileC
 import mobile.MobileControlsSubState;
 #end
 
