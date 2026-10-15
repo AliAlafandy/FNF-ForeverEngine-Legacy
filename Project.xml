@@ -93,12 +93,12 @@
 			<!--Target SDK-->
 			<!--<android min-sdk-version="16" target-sdk-version="29" max-sdk-version="33" if="${lime &lt; 8.1.0}"/>
         </config>
-	</section>
+	</section>-->
 
 	<section if="ios">
 		<!--Dependency--> 
-		<!--<dependency name="Metal.framework" if="${lime &lt; 8.0.0}" />
-	</section>-->
+		<dependency name="Metal.framework" if="${lime &lt; 8.0.0}" />
+	</section>
 
     <haxedef name="no-deprecation-warnings" unless="debug" />
 
