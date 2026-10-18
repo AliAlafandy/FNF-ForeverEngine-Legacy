@@ -95,6 +95,9 @@
         </config>
 	</section>-->
 
+	<android target-sdk-version="29" if="android"/>
+	<android min-sdk-version="19" if="android"/>
+
 	<section if="ios">
 		<!--Dependency--> 
 		<dependency name="Metal.framework" if="${lime &lt; 8.0.0}" />
