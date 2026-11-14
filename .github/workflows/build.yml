@@ -43,8 +43,8 @@ jobs:
         if: startsWith(inputs.name, 'Android')
         uses: actions/setup-java@main
         with:
-          distribution: 'zulu'
-          java-version: 18
+          distribution: 'temurin'
+          java-version: 11
 
       - name: Setup Android SDK
         if: startsWith(inputs.name, 'Android')
