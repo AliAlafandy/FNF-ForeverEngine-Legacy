@@ -78,7 +78,7 @@ jobs:
           haxelib run hmm install --quiet
 
       - name: Activate Lime 8.3.2
-        if: inputs.name == 'iOS'
+        if: inputs.name == 'iOS' || startsWith(inputs.name, 'Android')
         run: |
           haxelib set lime 8.3.2
           haxelib list
