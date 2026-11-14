@@ -91,7 +91,7 @@
 
 	<section if="ios">
 		<!--Dependency-->
-		<dependency name="Metal.framework" if="${lime < 8.0.0}" />
+		<dependency name="Metal.framework" if="${lime &lt; 8.0.0}" />
 	</section>
 
     <haxedef name="no-deprecation-warnings" unless="debug" />
