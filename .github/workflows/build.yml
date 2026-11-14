@@ -39,12 +39,12 @@ jobs:
         with:
           ndk-version: r21e
 
-      - name: Setup Java JDK 17
+      - name: Setup Java JDK
         if: startsWith(inputs.name, 'Android')
         uses: actions/setup-java@main
         with:
-          distribution: 'temurin'
-          java-version: 17
+          distribution: 'zulu'
+          java-version: 18
 
       - name: Setup Android SDK
         if: startsWith(inputs.name, 'Android')
@@ -83,17 +83,6 @@ jobs:
           haxelib set lime 8.3.2
           haxelib list
           haxelib run lime --version
-
-      - name: Setup Java JDK 11
-        if: startsWith(inputs.name, 'Android')
-        uses: actions/setup-java@main
-        with:
-          distribution: 'temurin'
-          java-version: 11
-
-      - name: Verify Java JDK 11
-        if: startsWith(inputs.name, 'Android')
-        run: java -version
 
       - name: Configure Android
         if: startsWith(inputs.name, 'Android')
