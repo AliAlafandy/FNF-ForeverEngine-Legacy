@@ -45,7 +45,7 @@
 
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
 
-	<!-- _______________________________ Libraries ______________________________ -->
+	<!-- ______________________________ Libraries ______________________________ -->
 
 	<haxedev set="webgl" if="html5" />
 
@@ -85,29 +85,20 @@
 	<haxedef name="HXCPP_STACK_LINE" />
 	<haxedef name="HXCPP_STACK_TRACE" />
 
-	<!--<section if="android">
-		<config>
-			<!--Gradle-->
-			<!--<android gradle-version="7.4.2" gradle-plugin="7.3.1" />--> <!-- ENABLE THIS IF YOU HAVE ISSUES AT COMPILE -->
-
-			<!--Target SDK-->
-			<!--<android min-sdk-version="16" target-sdk-version="29" max-sdk-version="33" if="${lime &lt; 8.1.0}"/>
-        </config>
-	</section>-->
-
-	<android target-sdk-version="29" if="android"/>
+	<!-- Android compile/target SDK. Keep the minimum supported Android version unchanged. -->
+	<android target-sdk-version="31" if="android"/>
 	<android min-sdk-version="19" if="android"/>
 
 	<section if="ios">
-		<!--Dependency--> 
-		<dependency name="Metal.framework" if="${lime &lt; 8.0.0}" />
+		<!--Dependency-->
+		<dependency name="Metal.framework" if="${lime < 8.0.0}" />
 	</section>
 
     <haxedef name="no-deprecation-warnings" unless="debug" />
 
 	<!-- For all Windows platforms -->
 	<app path="export\32bit\windows\bin" if="32bits"/>
-	
+
 	<!-- Do whatever you want I'm tired uninstall and install everytime -->
 	<certificate path="key.keystore" password="@ellawy09" alias="alafandy" alias-password="@ellawy09" if="android" unless="debug"/>
 
