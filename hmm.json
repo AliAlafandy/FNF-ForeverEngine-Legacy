@@ -58,7 +58,7 @@
          "name": "extension-androidtools",
          "type": "git",
          "dir": null,
-         "ref": "main",
+         "ref": "master",
          "url": "https://github.com/AlafandyPorting/extension-androidtools-legacy"
       }
    ]
