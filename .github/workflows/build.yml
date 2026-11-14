@@ -99,8 +99,78 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
+      - name: Select Android ABI
+        if: startsWith(inputs.name, 'Android')
+        env:
+          BUILD_NAME: ${{ inputs.name }}
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          project = Path("Project.xml")
+          content = project.read_text(encoding="utf-8")
+          marker = '<android target-sdk-version="31" if="android"/>'
+
+          if os.environ["BUILD_NAME"] == "Android x64":
+              architecture = "arm64"
+              excluded = "armv7"
+          elif os.environ["BUILD_NAME"] == "Android x32":
+              architecture = "armv7"
+              excluded = "arm64"
+          else:
+              raise SystemExit(f"Unexpected Android build name: {os.environ['BUILD_NAME']}")
+
+          if '<architecture name=' in content:
+              raise SystemExit("Project.xml already contains an architecture rule; refusing to add a duplicate.")
+
+          rule = f'\t<architecture name="{architecture}" exclude="{excluded}" if="android" />'
+          if marker not in content:
+              raise SystemExit("Could not find Android target SDK marker in Project.xml.")
+
+          project.write_text(content.replace(marker, rule + "\\n" + marker, 1), encoding="utf-8")
+          print(f"Configured Android ABI: {architecture}; excluded: {excluded}")
+          PY
+
       - name: Compile
         run: haxelib run lime build ${{ inputs.buildArgs }}
+
+      - name: Verify Android APK ABI
+        if: startsWith(inputs.name, 'Android')
+        env:
+          BUILD_NAME: ${{ inputs.name }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import zipfile
+          from pathlib import Path
+
+          if os.environ["BUILD_NAME"] == "Android x64":
+              expected = "libApplicationMain-64.so"
+              forbidden = "libApplicationMain-v7.so"
+          else:
+              expected = "libApplicationMain-v7.so"
+              forbidden = "libApplicationMain-64.so"
+
+          apk_dir = Path("export/release/android/bin/app/build/outputs/apk/release")
+          apks = list(apk_dir.glob("*.apk"))
+          if not apks:
+              raise SystemExit(f"No APK found in {apk_dir}")
+
+          for apk in apks:
+              with zipfile.ZipFile(apk) as archive:
+                  native_libs = [
+                      Path(name).name for name in archive.namelist()
+                      if name.endswith(".so") and "libApplicationMain-" in name
+                  ]
+
+              if expected not in native_libs:
+                  raise SystemExit(f"{apk.name}: missing required {expected}; found {native_libs}")
+              if forbidden in native_libs:
+                  raise SystemExit(f"{apk.name}: contains forbidden {forbidden}; found {native_libs}")
+
+              print(f"Verified {apk.name}: {expected} present; {forbidden} absent.")
+          PY
 
       - name: Make IPA
         if: inputs.name == 'iOS'
