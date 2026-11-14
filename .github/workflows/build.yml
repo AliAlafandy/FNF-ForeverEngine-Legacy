@@ -128,7 +128,7 @@ jobs:
           if marker not in content:
               raise SystemExit("Could not find Android target SDK marker in Project.xml.")
 
-          project.write_text(content.replace(marker, rule + "\\n" + marker, 1), encoding="utf-8")
+          project.write_text(content.replace(marker, rule + "\n" + marker, 1), encoding="utf-8")
           print(f"Configured Android ABI: {architecture}; excluded: {excluded}")
           PY
 
