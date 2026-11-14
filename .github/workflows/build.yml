@@ -39,12 +39,12 @@ jobs:
         with:
           ndk-version: r21e
 
-      - name: Setup Java JDK
+      - name: Setup Java JDK 17
         if: startsWith(inputs.name, 'Android')
         uses: actions/setup-java@main
         with:
           distribution: 'temurin'
-          java-version: 11
+          java-version: 17
 
       - name: Setup Android SDK
         if: startsWith(inputs.name, 'Android')
@@ -76,6 +76,17 @@ jobs:
         run: |
           haxelib install hmm --quiet
           haxelib run hmm install --quiet
+
+      - name: Setup Java JDK 11
+        if: startsWith(inputs.name, 'Android')
+        uses: actions/setup-java@main
+        with:
+          distribution: 'temurin'
+          java-version: 11
+
+      - name: Verify Java JDK 11
+        if: startsWith(inputs.name, 'Android')
+        run: java -version
 
       - name: Configure Android
         if: startsWith(inputs.name, 'Android')
