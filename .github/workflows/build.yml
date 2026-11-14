@@ -77,6 +77,13 @@ jobs:
           haxelib install hmm --quiet
           haxelib run hmm install --quiet
 
+      - name: Activate Lime 8.3.2
+        if: inputs.name == 'iOS'
+        run: |
+          haxelib set lime 8.3.2
+          haxelib list
+          haxelib run lime --version
+
       - name: Setup Java JDK 11
         if: startsWith(inputs.name, 'Android')
         uses: actions/setup-java@main
